@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <!-- 인터페이스와 동일하게 이름을 맞추어주어야 함. 메소드 이름은 id-->
+ <mapper namespace="org.kidding.mapper.BoardMapper">
+ 
+ 	<select id="getList" resultType="org.kidding.domain.Board">
+		select * from tbl_board order by bno desc limit ${skip}, 10
+ 	</select>
+ 
+  	<select id="get" resultType="org.kidding.domain.Board">
+		select * from tbl_board where bno = #{bno}
+ 	</select>
+ 	 
+ 	<select id="count" resultType="Integer">
+		select count(*) from tbl_board
+ 	</select>
+ 	
+ 	<insert id="insert">
+		insert into tbl_board (title, content, writer) values (#{title}, #{content}, #{writer})
+	</insert>
+ 
+	<delete id="delete">
+		delete from tbl_board where bno = #{bno}
+ 	</delete>
+ 
+ 	<update id="update">
+		update tbl_board set title = #{title}, content = #{content} where bno = #{bno}
+ 	</update>
+ 	
+ </mapper>
