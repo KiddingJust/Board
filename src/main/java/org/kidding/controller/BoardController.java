@@ -22,8 +22,30 @@ public class BoardController {
 
 	private BoardService service;
 	
-	@GetMapping("/read")
-	public void read(@ModelAttribute("pageObj") PageParam pageParam, Model model) {
+	@PostMapping("/modify") //리다이렉트 할 계획이면 리턴 타입은 String.
+	public String modify(PageParam pageParam, Board board, RedirectAttributes rttr) {
+		
+		int result = service.modify(board);
+				
+		//한 번만 전달되도록! 
+		rttr.addFlashAttribute("result", result ==1?"SUCCESS":"FAIL");
+		
+		return pageParam.getLink("redirect:/board/read");
+	}
+	
+	@PostMapping("/remove")
+	public String remove(PageParam pageParam, RedirectAttributes rttr) {
+	
+		int count = service.remove(pageParam);	
+		log.info(count);
+		log.info(pageParam);
+		rttr.addFlashAttribute("result", count==1?"SUCCESS":"FAIL");
+		
+		return "redirect:/board/list?page="+pageParam.getPage();
+	}
+	
+	@GetMapping({"/read", "/modify"})
+	public void read(@ModelAttribute("pageObj")PageParam pageParam, Model model) {
 		log.info("read page.......");
 		//DB 연동 안 한 상태
 		model.addAttribute("board", service.get(pageParam));	

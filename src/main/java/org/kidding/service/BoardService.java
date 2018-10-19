@@ -14,4 +14,8 @@ public interface BoardService {
 	public int getTotal();
 	
 	public Board get(PageParam param);
+	
+	public int remove(PageParam param);
+	
+	public int modify(Board board);
 }

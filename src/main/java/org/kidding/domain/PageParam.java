@@ -1,5 +1,7 @@
 package org.kidding.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Data;
 
 @Data
@@ -39,11 +41,20 @@ public class PageParam {
 		this.prev = this.start != 1;
 	}
 
+	public String getLink(String path) {
+		return UriComponentsBuilder.fromPath(path)
+		.queryParam("bno", this.bno)
+		.queryParam("page", this.page)
+		.toUriString();
+	}
+	
 	public static void main(String[] args) {
 		PageParam obj = new PageParam();
-		obj.setPage(3);
-		obj.setTotal(78);
+		obj.setPage(7);
+		obj.setBno(123);
 
-		System.out.println(obj);
+		
+	
+		System.out.println(obj.getLink("redirect:/board/read"));
 	}
 }
