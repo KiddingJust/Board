@@ -1,11 +1,8 @@
 package org.kidding.mapper;
 
 import java.util.List;
+import java.util.Map;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.kidding.domain.Board;
 import org.kidding.domain.PageParam;
 
@@ -22,4 +19,8 @@ public interface BoardMapper {
 	public Board get(PageParam param);
 	
 	public int delete(PageParam param);
+	
+//	public Map<String, String> search(PageParam pageParam);
+	
+	public int searchCount(PageParam pageParam);
 }

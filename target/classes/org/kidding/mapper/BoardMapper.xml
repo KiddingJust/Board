@@ -7,7 +7,25 @@
  <mapper namespace="org.kidding.mapper.BoardMapper">
  
  	<select id="getList" resultType="org.kidding.domain.Board">
-		select * from tbl_board order by bno desc limit ${skip}, 10
+		select * from tbl_board 
+		<where>
+    <if test="types != null">
+	<foreach item="item" collection="types" open="AND (" close=")" separator="OR">
+		
+		<if test="item == 't'.toString()">
+		title like concat('%', #{keyword}, '%')
+		</if>
+		<if test="item == 'c'.toString()">
+		content like concat('%', #{keyword}, '%')
+		</if>
+		<if test="item == 'w'.toString()">
+		writer like concat('%', #{keyword}, '%')
+		</if>
+	
+	</foreach>
+	</if>
+		</where>
+		order by bno desc limit ${skip}, ${display}
  	</select>
  
   	<select id="get" resultType="org.kidding.domain.Board">

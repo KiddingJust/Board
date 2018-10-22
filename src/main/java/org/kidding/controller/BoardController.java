@@ -54,6 +54,7 @@ public class BoardController {
 	@GetMapping("/list")
 	public void list(@ModelAttribute("pageObj") PageParam pageParam, Model model) {
 		log.info("list page.......");
+		log.info(pageParam);
 		//DB 연동 안 한 상태
 		pageParam.setTotal(service.getTotal());
 		model.addAttribute("list", service.getList(pageParam));	

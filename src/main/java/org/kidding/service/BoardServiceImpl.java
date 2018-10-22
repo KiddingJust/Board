@@ -1,6 +1,7 @@
 package org.kidding.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.kidding.domain.Board;
 import org.kidding.domain.PageParam;
@@ -50,5 +51,13 @@ public class BoardServiceImpl implements BoardService {
 	public int modify(Board board) {
 		return mapper.update(board);
 	}
+
+
+//	@Override
+//	public Map<String, String> search(PageParam param) {
+//
+//		return mapper.search(param);
+//		
+//	}
 	
 }

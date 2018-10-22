@@ -1,5 +1,8 @@
 package org.kidding.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.Data;
@@ -10,6 +13,13 @@ public class PageParam {
 	private static final double PER = 10.0;
 	private int page;
 	private int display;
+	
+
+	private String[] types;
+	private String type;
+	private String keyword;
+	
+	private boolean extend;
 
 	private int total, start, end, bno;
 	private boolean prev, next;
@@ -18,6 +28,17 @@ public class PageParam {
 	public PageParam() {
 		this.page = 1;
 		this.display = 10;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+		
+		if(type == null || type.trim().length() == 0) { 
+			this.types = null;
+			return;
+		}
+		
+		this.types = type.split("");
 	}
 
 	public int getSkip() {
