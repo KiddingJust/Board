@@ -48,12 +48,19 @@
 					
 					<form role="form" action="/board/list" method="get">
 						<input type='hidden' name='page' value='${pageObj.page}'>
+						<input type='hidden' name='display' id='display' value='${pageObj.display}'>
+					    <input type='hidden' name='type' value='${pageObj.type}'>
+					    <input type='hidden' name='keyword' value='${pageObj.keyword}'>
+						<input type='hidden' name='bno' value='${pageObj.bno}'>
 						<button type="submit" class="btn btn-default">Go List</button>
 					</form>
 					
 					<form role="form" action="/board/remove" method="post">
 						<input type='hidden' name='page' value='${pageObj.page}'>
 						<input type='hidden' name='bno' value='${pageObj.bno}'>
+						<input type='hidden' name='display' id='display' value='${pageObj.display}'>
+					    <input type='hidden' name='type' value='${pageObj.type}'>
+					    <input type='hidden' name='keyword' value='${pageObj.keyword}'>
 						<button type="submit" class="btn btn-default">Remove</button>
 					</form>
 					

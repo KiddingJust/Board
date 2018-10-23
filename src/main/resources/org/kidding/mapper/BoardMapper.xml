@@ -34,6 +34,23 @@
  	 
  	<select id="count" resultType="Integer">
 		select count(*) from tbl_board
+	<where>
+    <if test="types != null">
+	<foreach item="item" collection="types" open="AND (" close=")" separator="OR">
+		
+		<if test="item == 't'.toString()">
+		title like concat('%', #{keyword}, '%')
+		</if>
+		<if test="item == 'c'.toString()">
+		content like concat('%', #{keyword}, '%')
+		</if>
+		<if test="item == 'w'.toString()">
+		writer like concat('%', #{keyword}, '%')
+		</if>
+	
+	</foreach>
+	</if>
+	</where>
  	</select>
  	
  	<insert id="insert">

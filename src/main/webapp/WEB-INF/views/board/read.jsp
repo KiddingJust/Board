@@ -39,11 +39,18 @@
 					
 					<form role="form" action="/board/list" method="get">
 						<input type='hidden' name='page' value='${pageObj.page}'>
+					    <input type='hidden' name='display' id='display' value='${pageObj.display}'>
+					    <input type='hidden' name='type' value='${pageObj.type}'>
+					    <input type='hidden' name='keyword' value='${pageObj.keyword}'>
 						<button type="submit" class="btn btn-default">Go List</button>
 					</form>
 					<form role="form" action="/board/modify" method="get">
 						<input type='hidden' name='page' value='${pageObj.page}'>
+						<input type='hidden' name='display' id='display' value='${pageObj.display}'>
+					    <input type='hidden' name='type' value='${pageObj.type}'>
+					    <input type='hidden' name='keyword' value='${pageObj.keyword}'>
 						<input type='hidden' name='bno' value='${pageObj.bno}'>
+						
 						<button type="submit" class="btn btn-default">Modify</button>
 					</form>
 					
@@ -53,6 +60,8 @@
 		<!-- /.panel -->
 	</div>
 	<!-- /.col-lg-6 -->
+	
+
 <!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">

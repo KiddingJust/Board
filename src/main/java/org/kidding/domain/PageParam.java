@@ -13,17 +13,16 @@ public class PageParam {
 	private static final double PER = 10.0;
 	private int page;
 	private int display;
-	
+
+	private int total, start, end, bno;
+	private boolean prev, next;
 
 	private String[] types;
 	private String type;
 	private String keyword;
 	
 	private boolean extend;
-
-	private int total, start, end, bno;
-	private boolean prev, next;
-
+	
 	// 생성자. display를 기본으로 10개로 주는 것. 그리고 page는 기본적으로 1페이지로 가야 함.
 	public PageParam() {
 		this.page = 1;
@@ -37,17 +36,15 @@ public class PageParam {
 			this.types = null;
 			return;
 		}
-		
 		this.types = type.split("");
 	}
 
 	public int getSkip() {
 		return (this.page - 1) * 10;
 	}
-	
+
 	public void setTotal(int total) {
 		this.total = total;
-
 		// end 계산 다시 해봐
 		// 상수값들은 이와 같이 간단히 빼줄 수 있음
 		this.end = (int) (Math.ceil(this.page / PER)) * 10;
@@ -69,13 +66,13 @@ public class PageParam {
 		.toUriString();
 	}
 	
-	public static void main(String[] args) {
-		PageParam obj = new PageParam();
-		obj.setPage(7);
-		obj.setBno(123);
-
-		
-	
-		System.out.println(obj.getLink("redirect:/board/read"));
-	}
+//	public static void main(String[] args) {
+//		PageParam obj = new PageParam();
+//		obj.setPage(7);
+//		obj.setBno(123);
+//
+//		
+//	
+//		System.out.println(obj.getLink("redirect:/board/read"));
+//	}
 }

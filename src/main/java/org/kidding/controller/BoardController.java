@@ -47,6 +47,7 @@ public class BoardController {
 	@GetMapping({"/read", "/modify"})
 	public void read(@ModelAttribute("pageObj")PageParam pageParam, Model model) {
 		log.info("read page.......");
+		log.info(pageParam);
 		//DB 연동 안 한 상태
 		model.addAttribute("board", service.get(pageParam));	
 	}
@@ -56,6 +57,7 @@ public class BoardController {
 		log.info("list page.......");
 		log.info(pageParam);
 		//DB 연동 안 한 상태
+		
 		pageParam.setTotal(service.getTotal());
 		model.addAttribute("list", service.getList(pageParam));	
 	}
