@@ -39,4 +39,5 @@ public class BoardMapperTests {
 		mapper.getList(param).forEach(board -> log.info(board));
 	}
 	
+
 }

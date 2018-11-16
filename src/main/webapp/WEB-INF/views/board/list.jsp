@@ -146,7 +146,7 @@
          });
          
          //버튼 활성화
-         $('.pagination li[data-page='+pageNum+']').addClass("active");
+         $('.pagination li[data-page='+pageNum+']').addClass=("active");
             
          //버튼 클릭
          $('.pagination li a').on("click", function(e){
